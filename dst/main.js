@@ -11303,6 +11303,7 @@ Elm.Main.make = function (_elm) {
            _U.list([]),
            _U.list([A2(jumpTo,
                    "github",
+                   "https://github.com/jdoiwork/jdoiwork.github.io")
                    ,A2(jumpTo,"twitter","https://twitter.com/jdoiwork")]))]));
    return _elm.Main.values = {_op: _op,main: main,jumpTo: jumpTo};
 };
