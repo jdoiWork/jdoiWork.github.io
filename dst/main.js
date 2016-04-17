@@ -11298,7 +11298,7 @@ Elm.Main.make = function (_elm) {
    _U.list([]),
    _U.list([A2($Html.h1,
            _U.list([]),
-           _U.list([$Html.text("jdoiwork")]))
+           _U.list([$Html.text("@jdoi.work")]))
            ,A2($Html.ul,
            _U.list([]),
            _U.list([A2(jumpTo,
