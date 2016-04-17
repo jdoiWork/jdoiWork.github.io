@@ -1,3 +1,3 @@
-# jdoiWork.github.io
+# jdoiwork.github.io
 
-http://jdoiWork.github.io
+http://jdoiwork.github.io
