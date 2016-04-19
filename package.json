@@ -1,5 +1,7 @@
 {
+  "private": true,
   "devDependencies": {
+    "coffee-script": "^1.10.0",
     "gulp": "^3.9.1",
     "gulp-shell": "^0.5.2"
   }
