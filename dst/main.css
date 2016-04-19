@@ -1,5 +1,34 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-
 body {
-  font-family: 'Roboto', sans-serif;
-}
+  font-family: 'Roboto', sans-serif; }
+
+#home-logo {
+  text-align: center; }
+
+#contacts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch; }
+  #contacts li {
+    flex: auto;
+    display: block;
+    max-width: 16em;
+    margin: 1em; }
+    #contacts li a {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 16px;
+      padding: 1em; }
+      #contacts li a.twitter {
+        color: #ffffff;
+        background-color: #55acee; }
+      #contacts li a.github {
+        color: #ffffff;
+        background-color: #333; }
+      #contacts li a i {
+        font-size: 600%; }
+      #contacts li a span, #contacts li a i {
+        display: block; }

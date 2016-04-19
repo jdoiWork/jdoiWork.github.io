@@ -11300,14 +11300,16 @@ Elm.Main.make = function (_elm) {
       return A2($Html.li,
       _U.list([]),
       _U.list([A2($Html.a,
-      _U.list([$Html$Attributes.href(url)]),
-      _U.list([faIcon(title),$Html.text(title)]))]));
+      _U.list([$Html$Attributes.$class(title)
+              ,$Html$Attributes.href(url)]),
+      _U.list([faIcon(title)
+              ,A2($Html.span,_U.list([]),_U.list([$Html.text(title)]))]))]));
    });
    var main = A2($Html.main$,
    _U.list([]),
    _U.list([A2($Html.h1,
-           _U.list([]),
-           _U.list([$Html.text("@jdoi.work")]))
+           _U.list([$Html$Attributes.id("home-logo")]),
+           _U.list([$Html.text("@jdoi.pw")]))
            ,A2($Html.ul,
            _U.list([$Html$Attributes.id("contacts")]),
            _U.list([A2(jumpTo,

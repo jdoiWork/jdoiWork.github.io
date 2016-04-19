@@ -1,0 +1,38 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto)
+
+body
+  font-family: 'Roboto', sans-serif
+
+#home-logo
+  text-align: center
+  
+
+#contacts
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: center
+  align-items: stretch
+  li
+    flex: auto
+    display: block
+    max-width: 16em
+    margin: 1em
+    a
+      display: block
+      text-align: center
+      text-decoration: none
+      border-radius: 16px
+      padding: 1em
+      &.twitter
+        // https://about.twitter.com/ja/company/brand-assets
+        color: #ffffff
+        background-color: #55acee
+
+      &.github
+        color: #ffffff
+        background-color: #333
+      i
+        font-size: 600%
+      span, i
+        display: block

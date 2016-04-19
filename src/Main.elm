@@ -1,12 +1,17 @@
 module Main where
 
 import Html exposing (..)
-import Html.Attributes exposing (href, id, classList)
+import Html.Attributes exposing
+  ( href
+  , id
+  , class
+  , classList
+  )
 
 main : Html
 main =
   main' []
-    [ h1 [] [text "@jdoi.work"]
+    [ h1 [ id "home-logo"] [text "@jdoi.pw"]
     , ul [ id "contacts" ]
       [ jumpTo "github" "https://github.com/jdoiwork/jdoiwork.github.io"
       , jumpTo "twitter" "https://twitter.com/jdoiwork"
@@ -16,9 +21,9 @@ main =
 jumpTo : String -> String -> Html
 jumpTo title url =
   li []
-    [ a [href url]
+    [ a [class title, href url]
       [ faIcon title
-      , text title
+      , span [] [text title]
       ]
     ]
 
