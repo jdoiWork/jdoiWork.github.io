@@ -11287,12 +11287,21 @@ Elm.Main.make = function (_elm) {
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
+   var faIcon = function (key) {
+      var icon = A2($Basics._op["++"],"fa-",key);
+      var classes = $Html$Attributes.classList(_U.list([{ctor: "_Tuple2"
+                                                        ,_0: "fa"
+                                                        ,_1: true}
+                                                       ,{ctor: "_Tuple2",_0: icon,_1: true}]));
+      var attrs = _U.list([classes]);
+      return A2($Html.i,attrs,_U.list([]));
+   };
    var jumpTo = F2(function (title,url) {
       return A2($Html.li,
       _U.list([]),
       _U.list([A2($Html.a,
       _U.list([$Html$Attributes.href(url)]),
-      _U.list([$Html.text(title)]))]));
+      _U.list([faIcon(title),$Html.text(title)]))]));
    });
    var main = A2($Html.main$,
    _U.list([]),
@@ -11300,10 +11309,13 @@ Elm.Main.make = function (_elm) {
            _U.list([]),
            _U.list([$Html.text("@jdoi.work")]))
            ,A2($Html.ul,
-           _U.list([]),
+           _U.list([$Html$Attributes.id("contacts")]),
            _U.list([A2(jumpTo,
                    "github",
                    "https://github.com/jdoiwork/jdoiwork.github.io")
                    ,A2(jumpTo,"twitter","https://twitter.com/jdoiwork")]))]));
-   return _elm.Main.values = {_op: _op,main: main,jumpTo: jumpTo};
+   return _elm.Main.values = {_op: _op
+                             ,main: main
+                             ,jumpTo: jumpTo
+                             ,faIcon: faIcon};
 };
