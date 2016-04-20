@@ -15,3 +15,6 @@
 2. install [node](https://nodejs.org/en/)
 3. npm install -g gulp-cli
 
+## Windowsの場合
+
+- コマンドプロンプトで `chcp 65001` してないとelmでエラー
