@@ -11309,7 +11309,7 @@ Elm.Main.make = function (_elm) {
    _U.list([]),
    _U.list([A2($Html.h1,
            _U.list([$Html$Attributes.id("home-logo")]),
-           _U.list([$Html.text("@jdoi.pw")]))
+           _U.list([$Html.text("jdoi.pw")]))
            ,A2($Html.ul,
            _U.list([$Html$Attributes.id("contacts")]),
            _U.list([A2(jumpTo,

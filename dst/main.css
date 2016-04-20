@@ -1,9 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Syncopate);
 body {
   font-family: 'Roboto', sans-serif; }
 
 #home-logo {
-  text-align: center; }
+  text-align: center;
+  background-color: rebeccapurple;
+  margin: 0;
+  padding: 1em;
+  font-size: 800%;
+  color: wheat;
+  font-weight: 900;
+  font-family: 'Syncopate', sans-serif; }
 
 #contacts {
   display: flex;
