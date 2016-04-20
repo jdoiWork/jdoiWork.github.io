@@ -5,7 +5,7 @@
 
 # Todo
 
-- httsp
+- https
 - GTD
 - 株
 
