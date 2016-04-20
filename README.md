@@ -3,12 +3,6 @@
 - http://jdoi.pw
 - http://jdoiwork.github.io
 
-# Todo
-
-- https
-- GTD
-- 株
-
 # Build
 
 1. install [elm](http://elm-lang.org/)
