@@ -12,7 +12,7 @@ main : Html
 main =
   main' []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
-    , ul [ id "contacts" ]
+    , ul [ id "about" ]
       [ jumpTo "github" "https://github.com/jdoiwork/jdoiwork.github.io"
       , jumpTo "twitter" "https://twitter.com/jdoiwork"
       ]

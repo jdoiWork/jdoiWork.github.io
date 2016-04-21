@@ -11311,7 +11311,7 @@ Elm.Main.make = function (_elm) {
            _U.list([$Html$Attributes.id("home-logo")]),
            _U.list([$Html.text("jdoi.pw")]))
            ,A2($Html.ul,
-           _U.list([$Html$Attributes.id("contacts")]),
+           _U.list([$Html$Attributes.id("about")]),
            _U.list([A2(jumpTo,
                    "github",
                    "https://github.com/jdoiwork/jdoiwork.github.io")
