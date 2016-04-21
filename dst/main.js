@@ -11272,11 +11272,11 @@ Elm.Html.Attributes.make = function (_elm) {
                                         ,property: property
                                         ,attribute: attribute};
 };
-Elm.Main = Elm.Main || {};
-Elm.Main.make = function (_elm) {
+Elm.About = Elm.About || {};
+Elm.About.make = function (_elm) {
    "use strict";
-   _elm.Main = _elm.Main || {};
-   if (_elm.Main.values) return _elm.Main.values;
+   _elm.About = _elm.About || {};
+   if (_elm.About.values) return _elm.About.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
@@ -11305,7 +11305,7 @@ Elm.Main.make = function (_elm) {
       _U.list([faIcon(title)
               ,A2($Html.span,_U.list([]),_U.list([$Html.text(title)]))]))]));
    });
-   var main = A2($Html.main$,
+   var view = A2($Html.main$,
    _U.list([]),
    _U.list([A2($Html.h1,
            _U.list([$Html$Attributes.id("home-logo")]),
@@ -11316,8 +11316,26 @@ Elm.Main.make = function (_elm) {
                    "github",
                    "https://github.com/jdoiwork/jdoiwork.github.io")
                    ,A2(jumpTo,"twitter","https://twitter.com/jdoiwork")]))]));
-   return _elm.Main.values = {_op: _op
-                             ,main: main
-                             ,jumpTo: jumpTo
-                             ,faIcon: faIcon};
+   return _elm.About.values = {_op: _op
+                              ,view: view
+                              ,jumpTo: jumpTo
+                              ,faIcon: faIcon};
+};
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
+   "use strict";
+   _elm.Main = _elm.Main || {};
+   if (_elm.Main.values) return _elm.Main.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $About = Elm.About.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var main = $About.view;
+   return _elm.Main.values = {_op: _op,main: main};
 };
