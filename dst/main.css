@@ -13,30 +13,30 @@ body {
   font-weight: 900;
   font-family: 'Syncopate', sans-serif; }
 
-#contacts {
+#about {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: stretch; }
-  #contacts li {
+  #about li {
     flex: auto;
     display: block;
     max-width: 16em;
     margin: 1em; }
-    #contacts li a {
+    #about li a {
       display: block;
       text-align: center;
       text-decoration: none;
       border-radius: 16px;
       padding: 1em; }
-      #contacts li a.twitter {
+      #about li a.twitter {
         color: #ffffff;
         background-color: #55acee; }
-      #contacts li a.github {
+      #about li a.github {
         color: #ffffff;
         background-color: #333; }
-      #contacts li a i {
+      #about li a i {
         font-size: 600%; }
-      #contacts li a span, #contacts li a i {
+      #about li a span, #about li a i {
         display: block; }
