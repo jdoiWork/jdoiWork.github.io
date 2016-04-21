@@ -10,13 +10,10 @@ import StartApp exposing (App, start)
 -- My Libraries
 import About
 
-type alias Model = ()
+type alias Model = About.Model
 
-type Action = Root
+type alias Action = About.Action
 
---main : Html
---main =
---  About.view
 main : Signal Html
 main = app.html
 
@@ -33,11 +30,10 @@ port tasks =
     app.tasks
 
 appInit : (Model, Effects Action)
-appInit = ((), Effects.none)
+appInit = ([], About.getItems)
 
 appView : Address Action -> Model -> Html
-appView _ _ = About.view
+appView _ m = About.view' m
 
 appUpdate : Action -> Model -> (Model, Effects Action)
-appUpdate _ m = (m, Effects.none)
-
+appUpdate = About.update
