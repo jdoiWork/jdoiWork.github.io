@@ -1,6 +1,6 @@
 module About where
 
-import Task exposing (Task, toMaybe)
+import Task    exposing (Task, toMaybe)
 import Effects exposing (Effects)
 import Json.Decode as Json exposing ((:=))
 import Http exposing (get)
@@ -22,35 +22,16 @@ type alias About =
 type Action = Request
             | Response Model
 
-view : Html
-view =
+view : List About -> Html
+view items =
   main' []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
     , ul [ id "about" ]
-      [ jumpTo "github" "https://github.com/jdoiwork/jdoiwork.github.io"
-      , jumpTo "twitter" "https://twitter.com/jdoiwork"
-      ]
+         (List.map jumpTo items) 
     ]
 
-view' : List About -> Html
-view' items =
-  main' []
-    [ h1 [ id "home-logo"] [text "jdoi.pw"]
-    , ul [ id "about" ]
-         (List.map jumpTo' items) 
-    ]
-
-jumpTo : String -> String -> Html
-jumpTo title url =
-  li []
-    [ a [class title, href url]
-      [ faIcon title
-      , span [] [text title]
-      ]
-    ]
-
-jumpTo' : About -> Html
-jumpTo' item =
+jumpTo : About -> Html
+jumpTo item =
   li []
     [ a [class item.title, href item.url]
       [ faIcon item.title
@@ -84,14 +65,8 @@ aboutDecoder =
     ("title" := Json.string)
     ("url"   := Json.string)
 
-toList : Maybe a -> List a
-toList x =
-  case x of
-    Just a  -> [a]
-    Nothing -> []
-
 update : Action -> Model -> (Model, Effects Action)
 update action model =
   case action of
-    Request -> ([], getItems)
+    Request        -> ([], getItems)
     Response items -> (items, Effects.none)

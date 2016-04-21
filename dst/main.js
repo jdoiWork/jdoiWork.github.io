@@ -12115,14 +12115,6 @@ Elm.About.make = function (_elm) {
    $Signal = Elm.Signal.make(_elm),
    $Task = Elm.Task.make(_elm);
    var _op = {};
-   var toList = function (x) {
-      var _p0 = x;
-      if (_p0.ctor === "Just") {
-            return _U.list([_p0._0]);
-         } else {
-            return _U.list([]);
-         }
-   };
    var faIcon = function (key) {
       var icon = A2($Basics._op["++"],"fa-",key);
       var classes = $Html$Attributes.classList(_U.list([{ctor: "_Tuple2"
@@ -12132,7 +12124,7 @@ Elm.About.make = function (_elm) {
       var attrs = _U.list([classes]);
       return A2($Html.i,attrs,_U.list([]));
    };
-   var jumpTo$ = function (item) {
+   var jumpTo = function (item) {
       return A2($Html.li,
       _U.list([]),
       _U.list([A2($Html.a,
@@ -12143,16 +12135,7 @@ Elm.About.make = function (_elm) {
               _U.list([]),
               _U.list([$Html.text(item.title)]))]))]));
    };
-   var jumpTo = F2(function (title,url) {
-      return A2($Html.li,
-      _U.list([]),
-      _U.list([A2($Html.a,
-      _U.list([$Html$Attributes.$class(title)
-              ,$Html$Attributes.href(url)]),
-      _U.list([faIcon(title)
-              ,A2($Html.span,_U.list([]),_U.list([$Html.text(title)]))]))]));
-   });
-   var view$ = function (items) {
+   var view = function (items) {
       return A2($Html.main$,
       _U.list([]),
       _U.list([A2($Html.h1,
@@ -12160,19 +12143,8 @@ Elm.About.make = function (_elm) {
               _U.list([$Html.text("jdoi.pw")]))
               ,A2($Html.ul,
               _U.list([$Html$Attributes.id("about")]),
-              A2($List.map,jumpTo$,items))]));
+              A2($List.map,jumpTo,items))]));
    };
-   var view = A2($Html.main$,
-   _U.list([]),
-   _U.list([A2($Html.h1,
-           _U.list([$Html$Attributes.id("home-logo")]),
-           _U.list([$Html.text("jdoi.pw")]))
-           ,A2($Html.ul,
-           _U.list([$Html$Attributes.id("about")]),
-           _U.list([A2(jumpTo,
-                   "github",
-                   "https://github.com/jdoiwork/jdoiwork.github.io")
-                   ,A2(jumpTo,"twitter","https://twitter.com/jdoiwork")]))]));
    var Response = function (a) {
       return {ctor: "Response",_0: a};
    };
@@ -12189,11 +12161,11 @@ Elm.About.make = function (_elm) {
    $Maybe.withDefault(_U.list([])),
    $Task.toMaybe(A2($Http.get,decoder,"dst/about.json")))));
    var update = F2(function (action,model) {
-      var _p1 = action;
-      if (_p1.ctor === "Request") {
+      var _p0 = action;
+      if (_p0.ctor === "Request") {
             return {ctor: "_Tuple2",_0: _U.list([]),_1: getItems};
          } else {
-            return {ctor: "_Tuple2",_0: _p1._0,_1: $Effects.none};
+            return {ctor: "_Tuple2",_0: _p0._0,_1: $Effects.none};
          }
    });
    return _elm.About.values = {_op: _op
@@ -12201,14 +12173,11 @@ Elm.About.make = function (_elm) {
                               ,Request: Request
                               ,Response: Response
                               ,view: view
-                              ,view$: view$
                               ,jumpTo: jumpTo
-                              ,jumpTo$: jumpTo$
                               ,faIcon: faIcon
                               ,getItems: getItems
                               ,decoder: decoder
                               ,aboutDecoder: aboutDecoder
-                              ,toList: toList
                               ,update: update};
 };
 Elm.Main = Elm.Main || {};
@@ -12230,9 +12199,7 @@ Elm.Main.make = function (_elm) {
    $Task = Elm.Task.make(_elm);
    var _op = {};
    var appUpdate = $About.update;
-   var appView = F2(function (_p0,m) {
-      return $About.view$(m);
-   });
+   var appView = F2(function (_p0,m) {    return $About.view(m);});
    var appInit = {ctor: "_Tuple2"
                  ,_0: _U.list([])
                  ,_1: $About.getItems};

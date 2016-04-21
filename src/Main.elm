@@ -33,7 +33,7 @@ appInit : (Model, Effects Action)
 appInit = ([], About.getItems)
 
 appView : Address Action -> Model -> Html
-appView _ m = About.view' m
+appView _ m = About.view m
 
 appUpdate : Action -> Model -> (Model, Effects Action)
 appUpdate = About.update
