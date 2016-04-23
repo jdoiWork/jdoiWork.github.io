@@ -1,8 +1,10 @@
-[
-  { "title":"github"
-  , "url":"https://github.com/jdoiwork/jdoiwork.github.io"
-  },
-  { "title":"twitter"
-  , "url":"https://twitter.com/jdoiwork"
-  }
-]
+{
+  "about":[
+    { "title":"github"
+    , "url":"https://github.com/jdoiwork/jdoiwork.github.io"
+    },
+    { "title":"twitter"
+    , "url":"https://twitter.com/jdoiwork"
+    }
+  ]
+}

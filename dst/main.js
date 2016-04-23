@@ -12154,7 +12154,9 @@ Elm.About.make = function (_elm) {
    About,
    A2($Json$Decode._op[":="],"title",$Json$Decode.string),
    A2($Json$Decode._op[":="],"url",$Json$Decode.string));
-   var decoder = $Json$Decode.list(aboutDecoder);
+   var decoder = A2($Json$Decode.at,
+   _U.list(["about"]),
+   $Json$Decode.list(aboutDecoder));
    var getItems = $Effects.task(A2($Task.map,
    Response,
    A2($Task.map,

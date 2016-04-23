@@ -57,7 +57,8 @@ getItems =
 
 decoder : Json.Decoder Model
 decoder =
-  Json.list aboutDecoder
+  Json.at ["about"]
+    (Json.list aboutDecoder)
 
 aboutDecoder : Json.Decoder About
 aboutDecoder =
