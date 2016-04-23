@@ -1,7 +1,7 @@
 # jdoi.pw
 
-- http://jdoi.pw
-- http://jdoiwork.github.io
+- https://jdoi.pw
+- https://jdoiwork.github.io
 
 # Build
 
