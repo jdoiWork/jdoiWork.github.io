@@ -39,14 +39,6 @@ jumpTo item =
       ]
     ]
 
-faIcon : String -> Html
-faIcon key =
-  let icon    = "fa-" ++ key
-      classes = classList [("fa", True), (icon, True)]
-      attrs   = [classes]
-  in
-    i attrs []
-
 getItems : Effects Action
 getItems =
   get decoder "dst/about.json"

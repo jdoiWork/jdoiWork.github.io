@@ -12359,20 +12359,6 @@ Elm.About.make = function(_elm) {
     $Signal = Elm.Signal.make(_elm),
     $Task = Elm.Task.make(_elm);
   var _op = {};
-  var faIcon = function(key) {
-    var icon = A2($Basics._op["++"], "fa-", key);
-    var classes = $Html$Attributes.classList(_U.list([{
-      ctor: "_Tuple2",
-      _0: "fa",
-      _1: true
-    }, {
-      ctor: "_Tuple2",
-      _0: icon,
-      _1: true
-    }]));
-    var attrs = _U.list([classes]);
-    return A2($Html.i, attrs, _U.list([]));
-  };
   var jumpTo = function(item) {
     return A2($Html.li,
       _U.list([]),
@@ -12443,7 +12429,6 @@ Elm.About.make = function(_elm) {
     Response: Response,
     view: view,
     jumpTo: jumpTo,
-    faIcon: faIcon,
     getItems: getItems,
     decoder: decoder,
     aboutDecoder: aboutDecoder,
