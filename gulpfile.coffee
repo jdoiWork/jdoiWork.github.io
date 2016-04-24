@@ -1,13 +1,12 @@
-gulp      = require('gulp')
-shell     = require('gulp-shell')
-sass      = require('gulp-sass')
-prettify  = require('gulp-jsbeautifier')
+gulp     = require('gulp')
+shell    = require('gulp-shell')
+sass     = require('gulp-sass')
+prettify = require('gulp-jsbeautifier')
 
 opts =
   prettify:
     indent_size: 2
     end_with_newline: true
-    #brace_style: "none"
 
 gulp.task 'default', ['elm', 'sass', 'json', 'js']
 
@@ -33,8 +32,8 @@ gulp.task 'js', ->
     .pipe(gulp.dest('./dst'))
 
 gulp.task 'watch', ->
-  gulp.watch './src/*.elm', [ 'elm' ]
-  gulp.watch './src/*.sass', [ 'sass' ]
-  gulp.watch './src/*.json', [ 'json' ]
-  gulp.watch './tmp/*.json', [ 'js' ]
+  gulp.watch './src/*.elm',  ['elm' ]
+  gulp.watch './src/*.sass', ['sass']
+  gulp.watch './src/*.json', ['json']
+  gulp.watch './tmp/*.json', ['js'  ]
   return
