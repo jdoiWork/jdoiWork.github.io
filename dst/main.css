@@ -1,7 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Syncopate);
 body {
-  font-family: 'Roboto', sans-serif; }
+  font-family: 'Roboto', sans-serif;
+}
 
 #home-logo {
   text-align: center;
@@ -11,32 +12,47 @@ body {
   font-size: 800%;
   color: wheat;
   font-weight: 900;
-  font-family: 'Syncopate', sans-serif; }
+  font-family: 'Syncopate', sans-serif;
+}
 
 #about {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: stretch; }
-  #about li {
-    flex: auto;
-    display: block;
-    max-width: 16em;
-    margin: 1em; }
-    #about li a {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 16px;
-      padding: 1em; }
-      #about li a.twitter {
-        color: #ffffff;
-        background-color: #55acee; }
-      #about li a.github {
-        color: #ffffff;
-        background-color: #333; }
-      #about li a i {
-        font-size: 600%; }
-      #about li a span, #about li a i {
-        display: block; }
+  align-items: stretch;
+}
+
+#about li {
+  flex: auto;
+  display: block;
+  max-width: 16em;
+  margin: 1em;
+}
+
+#about li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 16px;
+  padding: 1em;
+}
+
+#about li a.twitter {
+  color: #ffffff;
+  background-color: #55acee;
+}
+
+#about li a.github {
+  color: #ffffff;
+  background-color: #333;
+}
+
+#about li a i {
+  font-size: 600%;
+}
+
+#about li a span,
+#about li a i {
+  display: block;
+}

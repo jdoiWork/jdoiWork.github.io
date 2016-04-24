@@ -17,6 +17,7 @@ gulp.task 'sass', ->
   gulp
     .src('./src/*.sass')
     .pipe(sass().on('error', sass.logError))
+    .pipe(prettify(opts.prettify))
     .pipe(gulp.dest('./dst'))
 
 gulp.task 'json', ->
@@ -27,7 +28,7 @@ gulp.task 'json', ->
 
 gulp.task 'js', ->
   gulp
-    .src('./tmp/*.js')
+    .src(['./tmp/*.js', './src/*.js'])
     .pipe(prettify(opts.prettify))
     .pipe(gulp.dest('./dst'))
 
