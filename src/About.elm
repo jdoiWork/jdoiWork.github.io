@@ -33,9 +33,9 @@ view items =
 jumpTo : About -> Html
 jumpTo item =
   li []
-    [ a [class item.title, href item.url]
-      [ faIcon item.title
-      , span [] [text item.title]
+    [ a [href item.url]
+      [ span [class "trademark" ] []
+      , span [class "brand-name"] [text item.title]
       ]
     ]
 

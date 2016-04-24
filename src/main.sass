@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto)
 @import url(https://fonts.googleapis.com/css?family=Syncopate)
 
+@import vender/font-awesome/variables
+@import vender/font-awesome/mixins
+
 body
   font-family: 'Roboto', sans-serif
 
@@ -20,26 +23,38 @@ body
   flex-wrap: wrap
   justify-content: center
   align-items: stretch
+  
   li
     flex: auto
     display: block
     max-width: 16em
     margin: 1em
+
     a
       display: block
       text-align: center
       text-decoration: none
       border-radius: 16px
       padding: 1em
-      &.twitter
+
+      &[href="https://twitter.com/jdoiwork"]
         // https://about.twitter.com/ja/company/brand-assets
         color: #ffffff
         background-color: #55acee
 
-      &.github
+        .trademark:before
+          content: $fa-var-twitter
+
+      &[href="https://github.com/jdoiwork/jdoiwork.github.io"]
         color: #ffffff
         background-color: #333
-      i
+
+        .trademark:before
+          content: $fa-var-github
+
+      .trademark
+        +fa-icon()
         font-size: 600%
-      span, i
+
+      .trademark, .brand-name
         display: block

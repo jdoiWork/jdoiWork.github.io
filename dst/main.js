@@ -12377,9 +12377,11 @@ Elm.About.make = function(_elm) {
     return A2($Html.li,
       _U.list([]),
       _U.list([A2($Html.a,
-        _U.list([$Html$Attributes.$class(item.title), $Html$Attributes.href(item.url)]),
-        _U.list([faIcon(item.title), A2($Html.span,
-          _U.list([]),
+        _U.list([$Html$Attributes.href(item.url)]),
+        _U.list([A2($Html.span,
+          _U.list([$Html$Attributes.$class("trademark")]),
+          _U.list([])), A2($Html.span,
+          _U.list([$Html$Attributes.$class("brand-name")]),
           _U.list([$Html.text(item.title)]))]))]));
   };
   var view = function(items) {
