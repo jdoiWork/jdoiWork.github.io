@@ -1,8 +1,8 @@
-module About where
+module About exposing (..)
 
-import Task    exposing (Task, toMaybe)
-import Effects exposing (Effects)
-import Json.Decode as Json exposing ((:=))
+import Task    exposing (Task)
+import Result exposing (toMaybe)
+import Json.Decode as Json exposing (field)
 import Http exposing (get)
 import Html exposing (..)
 import Html.Attributes exposing
@@ -24,7 +24,7 @@ type Action = Request
 
 view : List About -> Html
 view items =
-  main' []
+  main_ []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
     , ul [ id "about" ]
          (List.map jumpTo items) 
@@ -55,8 +55,8 @@ decoder =
 aboutDecoder : Json.Decoder About
 aboutDecoder =
   Json.object2 About
-    ("title" := Json.string)
-    ("url"   := Json.string)
+    (field "title" Json.string)
+    (field "url" Json.string)
 
 update : Action -> Model -> (Model, Effects Action)
 update action model =
