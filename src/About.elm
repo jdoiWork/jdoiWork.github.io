@@ -40,7 +40,7 @@ jumpTo item =
 getItems : Cmd Msg
 getItems =
   Http.get
-    { url = "./about.json"
+    { url = "/dst/about.json"
     , expect = Http.expectJson Response decoder
     }
   

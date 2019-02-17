@@ -5750,9 +5750,19 @@
   };
   var author$project$About$getItems = elm$http$Http$get({
     expect: A2(elm$http$Http$expectJson, author$project$About$Response, author$project$About$decoder),
-    url: './about.json'
+    url: '/dst/about.json'
   });
-  var author$project$Main$appInit = _Utils_Tuple2(_List_Nil, author$project$About$getItems);
+  var author$project$Main$AboutMsg = function(a) {
+    return {
+      $: 'AboutMsg',
+      a: a
+    };
+  };
+  var elm$core$Platform$Cmd$map = _Platform_map;
+  var author$project$Main$appInit = _Utils_Tuple2({
+      about: _List_Nil
+    },
+    A2(elm$core$Platform$Cmd$map, author$project$Main$AboutMsg, author$project$About$getItems));
   var author$project$Main$init = function(_n0) {
     return author$project$Main$appInit;
   };
@@ -5777,7 +5787,28 @@
         }
       }
     });
-  var author$project$Main$appUpdate = author$project$About$update;
+  var author$project$Main$updateWith = F3(
+    function(toModel, toMsg, _n0) {
+      var subModel = _n0.a;
+      var subCmd = _n0.b;
+      return _Utils_Tuple2(
+        toModel(subModel),
+        A2(elm$core$Platform$Cmd$map, toMsg, subCmd));
+    });
+  var author$project$Main$appUpdate = F2(
+    function(msg, model) {
+      var subMsg = msg.a;
+      return A3(
+        author$project$Main$updateWith,
+        function(about) {
+          return _Utils_update(
+            model, {
+              about: about
+            });
+        },
+        author$project$Main$AboutMsg,
+        A2(author$project$About$update, subMsg, model.about));
+    });
   var author$project$Main$update = author$project$Main$appUpdate;
   var elm$json$Json$Decode$map = _Json_map1;
   var elm$json$Json$Decode$succeed = _Json_succeed;
@@ -5890,7 +5921,14 @@
             A2(elm$core$List$map, author$project$About$jumpTo, items))
         ]));
   };
-  var author$project$Main$appView = author$project$About$view;
+  var elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
+  var elm$html$Html$map = elm$virtual_dom$VirtualDom$map;
+  var author$project$Main$appView = function(model) {
+    return A2(
+      elm$html$Html$map,
+      author$project$Main$AboutMsg,
+      author$project$About$view(model.about));
+  };
   var author$project$Main$view = author$project$Main$appView;
   var elm$browser$Browser$External = function(a) {
     return {

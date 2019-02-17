@@ -1,3 +1,5 @@
-var div = document.getElementById('elm-main');
+var elmMain = document.getElementById('elm-main');
 
-Elm.embed(Elm.Main, div);
+var app = Elm.Main.init({
+  node: elmMain
+});
