@@ -6,34 +6,44 @@ import Html     exposing (..)
 import Browser
 
 -- My Libraries
---import About
+import About
 
---type alias Model = About.Model
+type alias Model = About.Model
 
---type alias Action = About.Action
+type alias Msg = About.Action
 
-main = Browser.sandbox { init = init, update = update, view = view }
-
-type alias Model =
-    {
-        name : String
+main = Browser.element
+    { init = init
+    , update = update
+    , subscriptions = subscriptions
+    , view = view
     }
 
-init : Model
-init = Model "name"
+-- type alias Model =
+--     {
+--         name : String
+--     }
 
-type Msg
-    = Name String
+init : () -> (About.Model, Cmd About.Action)
+init _ = appInit
 
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        Name name ->
-            { model | name = name }
+update = appUpdate
+view = appView
+subscriptions : About.Model -> Sub About.Action
+subscriptions model =
+    Sub.none
+-- type Msg
+--     = Name String
 
-view : Model -> Html Msg
-view model =
-    div [] [text "hello"]
+-- update : Msg -> Model -> Model
+-- update msg model =
+--     case msg of
+--         Name name ->
+--             { model | name = name }
+
+-- view : Model -> Html Msg
+-- view model =
+--     div [] [text "hello"]
 -- app : App Model
 -- app =
 --     start { init   = appInit
@@ -46,11 +56,11 @@ port tasks : Signal (Task Never ())
 port tasks =
     app.tasks
 -}
--- appInit : (Model, Effects Action)
--- appInit = ([], About.getItems)
+appInit : (About.Model, Cmd About.Action)
+appInit = ([], About.getItems)
 
--- appView : Address Action -> Model -> Html
--- appView _ m = div [] [] --About.view m
+appView : About.Model -> Html About.Action
+appView = About.view
 
--- appUpdate : Action -> Model -> (Model, Effects Action)
--- appUpdate = About.update
+appUpdate : Msg -> Model -> (Model, Cmd About.Action)
+appUpdate = About.update
