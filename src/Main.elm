@@ -13,7 +13,7 @@ type alias Model =
 
     }
 
-type alias Msg = About.Msg
+type Msg = AboutMsg About.Msg
 
 main = Browser.element
     { init = init
@@ -22,26 +22,32 @@ main = Browser.element
     , view = view
     }
 
-init : () -> (Model, Cmd About.Msg)
-init _ =
-    let (about, aboutMsg) = appInit
-    in ({ about = about }, aboutMsg )
+init : () -> (Model, Cmd Msg)
+init _ = appInit
 
 update = appUpdate
 
-view : Model -> Html About.Msg
+view : Model -> Html Msg
 view = appView
 
-subscriptions : Model -> Sub About.Msg
+subscriptions : Model -> Sub Msg
 subscriptions model = Sub.none
 
-appInit : (About.Model, Cmd About.Msg)
-appInit = ([], About.getItems)
+appInit : (Model, Cmd Msg)
+appInit = ( { about = [] }, Cmd.map AboutMsg About.getItems)
 
-appView : Model -> Html About.Msg
-appView model = About.view model.about
+appView : Model -> Html Msg
+appView model = map AboutMsg (About.view model.about)
 
-appUpdate : Msg -> Model -> (Model, Cmd About.Msg)
+appUpdate : Msg -> Model -> (Model, Cmd Msg)
 appUpdate msg model =
-    let (about, aboutMsg) = About.update msg model.about
-    in ({about = about}, aboutMsg)
+    case msg of
+        AboutMsg subMsg ->
+            About.update subMsg model.about
+            |> updateWith (\about -> {model | about = about}) AboutMsg
+
+
+updateWith : (subModel -> Model) -> (subMsg -> Msg) -> (subModel, Cmd subMsg) -> (Model, Cmd Msg)
+updateWith toModel toMsg (subModel, subCmd) =
+    (toModel subModel, Cmd.map toMsg subCmd)
+
