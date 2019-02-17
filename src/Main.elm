@@ -7,7 +7,11 @@ import Browser
 -- My Libraries
 import About
 
-type alias Model = About.Model
+--type alias Model = About.Model
+type alias Model =
+    { about : About.Model
+
+    }
 
 type alias Msg = About.Msg
 
@@ -18,20 +22,26 @@ main = Browser.element
     , view = view
     }
 
-init : () -> (About.Model, Cmd About.Msg)
-init _ = appInit
+init : () -> (Model, Cmd About.Msg)
+init _ =
+    let (about, aboutMsg) = appInit
+    in ({ about = about }, aboutMsg )
 
 update = appUpdate
+
+view : Model -> Html About.Msg
 view = appView
-subscriptions : About.Model -> Sub About.Msg
-subscriptions model =
-    Sub.none
+
+subscriptions : Model -> Sub About.Msg
+subscriptions model = Sub.none
 
 appInit : (About.Model, Cmd About.Msg)
 appInit = ([], About.getItems)
 
-appView : About.Model -> Html About.Msg
-appView = About.view
+appView : Model -> Html About.Msg
+appView model = About.view model.about
 
 appUpdate : Msg -> Model -> (Model, Cmd About.Msg)
-appUpdate = About.update
+appUpdate msg model =
+    let (about, aboutMsg) = About.update msg model.about
+    in ({about = about}, aboutMsg)
