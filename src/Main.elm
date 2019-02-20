@@ -7,6 +7,7 @@ import Browser
 
 -- My Libraries
 import About
+import Games
 
 --type alias Model = About.Model
 type alias Model =
@@ -15,6 +16,7 @@ type alias Model =
     }
 
 type Msg = AboutMsg About.Msg
+         | GamesMsg
 
 main = Browser.element
     { init = init
@@ -41,6 +43,7 @@ appView : Model -> Html Msg
 appView model = 
     main_ []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
+    , Html.map (\_ -> GamesMsg) Games.view
     , Html.map AboutMsg (About.view model.about)
     ]
 
@@ -48,6 +51,7 @@ appView model =
 appUpdate : Msg -> Model -> (Model, Cmd Msg)
 appUpdate msg model =
     case msg of
+        GamesMsg -> (model, Cmd.none)
         AboutMsg subMsg ->
             About.update subMsg model.about
             |> updateWith (\about -> {model | about = about}) AboutMsg

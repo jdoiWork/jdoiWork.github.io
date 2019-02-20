@@ -17,7 +17,11 @@ type Msg = Request
 
 view : List About -> Html Msg
 view items =
-  ul [ id "about" ] (List.map jumpTo items) 
+  section []
+  [ h2 [] [text "about"]
+  , ul [ id "about" ] (List.map jumpTo items) 
+  ]
+
 
 jumpTo : About -> Html Msg
 jumpTo item =
