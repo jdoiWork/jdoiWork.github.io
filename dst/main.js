@@ -5797,17 +5797,21 @@
     });
   var author$project$Main$appUpdate = F2(
     function(msg, model) {
-      var subMsg = msg.a;
-      return A3(
-        author$project$Main$updateWith,
-        function(about) {
-          return _Utils_update(
-            model, {
-              about: about
-            });
-        },
-        author$project$Main$AboutMsg,
-        A2(author$project$About$update, subMsg, model.about));
+      if (msg.$ === 'GamesMsg') {
+        return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+      } else {
+        var subMsg = msg.a;
+        return A3(
+          author$project$Main$updateWith,
+          function(about) {
+            return _Utils_update(
+              model, {
+                about: about
+              });
+          },
+          author$project$Main$AboutMsg,
+          A2(author$project$About$update, subMsg, model.about));
+      }
     });
   var author$project$Main$update = author$project$Main$appUpdate;
   var elm$json$Json$Decode$map = _Json_map1;
@@ -5892,11 +5896,75 @@
         _List_Nil,
         xs);
     });
-  var elm$html$Html$h1 = _VirtualDom_node('h1');
-  var elm$html$Html$main_ = _VirtualDom_node('main');
+  var elm$html$Html$h2 = _VirtualDom_node('h2');
+  var elm$html$Html$section = _VirtualDom_node('section');
   var elm$html$Html$ul = _VirtualDom_node('ul');
   var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
   var author$project$About$view = function(items) {
+    return A2(
+      elm$html$Html$section,
+      _List_Nil,
+      _List_fromArray(
+        [
+          A2(
+            elm$html$Html$h2,
+            _List_Nil,
+            _List_fromArray(
+              [
+                elm$html$Html$text('about')
+              ])),
+          A2(
+            elm$html$Html$ul,
+            _List_fromArray(
+              [
+                elm$html$Html$Attributes$id('about')
+              ]),
+            A2(elm$core$List$map, author$project$About$jumpTo, items))
+        ]));
+  };
+  var author$project$Games$view = A2(
+    elm$html$Html$section,
+    _List_Nil,
+    _List_fromArray(
+      [
+        A2(
+          elm$html$Html$h2,
+          _List_Nil,
+          _List_fromArray(
+            [
+              elm$html$Html$text('Games')
+            ])),
+        A2(
+          elm$html$Html$ul,
+          _List_Nil,
+          _List_fromArray(
+            [
+              A2(
+                elm$html$Html$li,
+                _List_Nil,
+                _List_fromArray(
+                  [
+                    A2(
+                      elm$html$Html$a,
+                      _List_fromArray(
+                        [
+                          elm$html$Html$Attributes$href('/g2048')
+                        ]),
+                      _List_fromArray(
+                        [
+                          elm$html$Html$text('G2048')
+                        ]))
+                  ]))
+            ]))
+      ]));
+  var author$project$Main$GamesMsg = {
+    $: 'GamesMsg'
+  };
+  var elm$html$Html$h1 = _VirtualDom_node('h1');
+  var elm$html$Html$main_ = _VirtualDom_node('main');
+  var elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
+  var elm$html$Html$map = elm$virtual_dom$VirtualDom$map;
+  var author$project$Main$appView = function(model) {
     return A2(
       elm$html$Html$main_,
       _List_Nil,
@@ -5913,21 +5981,16 @@
                 elm$html$Html$text('jdoi.pw')
               ])),
           A2(
-            elm$html$Html$ul,
-            _List_fromArray(
-              [
-                elm$html$Html$Attributes$id('about')
-              ]),
-            A2(elm$core$List$map, author$project$About$jumpTo, items))
+            elm$html$Html$map,
+            function(_n0) {
+              return author$project$Main$GamesMsg;
+            },
+            author$project$Games$view),
+          A2(
+            elm$html$Html$map,
+            author$project$Main$AboutMsg,
+            author$project$About$view(model.about))
         ]));
-  };
-  var elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
-  var elm$html$Html$map = elm$virtual_dom$VirtualDom$map;
-  var author$project$Main$appView = function(model) {
-    return A2(
-      elm$html$Html$map,
-      author$project$Main$AboutMsg,
-      author$project$About$view(model.about));
   };
   var author$project$Main$view = author$project$Main$appView;
   var elm$browser$Browser$External = function(a) {
