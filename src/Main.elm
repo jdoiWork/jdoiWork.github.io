@@ -43,7 +43,7 @@ appView : Model -> Html Msg
 appView model = 
     main_ []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
-    , Html.map (\_ -> GamesMsg) Games.view
+    , Html.map (always GamesMsg) Games.view
     , Html.map AboutMsg (About.view model.about)
     ]
 
@@ -60,4 +60,3 @@ appUpdate msg model =
 updateWith : (subModel -> Model) -> (subMsg -> Msg) -> (subModel, Cmd subMsg) -> (Model, Cmd Msg)
 updateWith toModel toMsg (subModel, subCmd) =
     (toModel subModel, Cmd.map toMsg subCmd)
-
