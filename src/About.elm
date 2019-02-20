@@ -3,12 +3,7 @@ module About exposing (..)
 import Json.Decode as Json exposing (field, map2)
 import Http 
 import Html exposing (..)
-import Html.Attributes exposing
-  ( href
-  , id
-  , class
-  , classList
-  )
+import Html.Attributes exposing (..)
 
 type alias Model = List About
 
@@ -22,11 +17,7 @@ type Msg = Request
 
 view : List About -> Html Msg
 view items =
-  main_ []
-    [ h1 [ id "home-logo"] [text "jdoi.pw"]
-    , ul [ id "about" ]
-         (List.map jumpTo items) 
-    ]
+  ul [ id "about" ] (List.map jumpTo items) 
 
 jumpTo : About -> Html Msg
 jumpTo item =

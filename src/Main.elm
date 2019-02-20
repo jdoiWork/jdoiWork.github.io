@@ -2,6 +2,7 @@ module Main exposing (..)
 
 -- Vendor Libraries
 import Html     exposing (..)
+import Html.Attributes exposing (..)
 import Browser
 
 -- My Libraries
@@ -37,7 +38,12 @@ appInit : (Model, Cmd Msg)
 appInit = ( { about = [] }, Cmd.map AboutMsg About.getItems)
 
 appView : Model -> Html Msg
-appView model = map AboutMsg (About.view model.about)
+appView model = 
+    main_ []
+    [ h1 [ id "home-logo"] [text "jdoi.pw"]
+    , Html.map AboutMsg (About.view model.about)
+    ]
+
 
 appUpdate : Msg -> Model -> (Model, Cmd Msg)
 appUpdate msg model =
