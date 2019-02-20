@@ -43,8 +43,8 @@ appView : Model -> Html Msg
 appView model = 
     main_ []
     [ h1 [ id "home-logo"] [text "jdoi.pw"]
-    , Html.map (always GamesMsg) Games.view
-    , Html.map AboutMsg (About.view model.about)
+    , Games.view             |> Html.map (always GamesMsg)
+    , About.view model.about |> Html.map AboutMsg 
     ]
 
 
